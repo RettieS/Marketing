@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ============================================= -->
+  <!-- META & DOCUMENT SETUP                         -->
+  <!-- ============================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ALEXIC — Ultra-Luxury Marketing Consultancy</title>
   <meta name="description" content="We craft timeless brand narratives for the world’s most exclusive clientele.">
+
+  <!-- ============================================= -->
+  <!-- GOOGLE FONTS: Playfair Display + Inter -->
+  <!-- ============================================= -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- ============================================= -->
+  <!-- CSS: Root Variables & Global Styles           -->
+  <!-- ============================================= -->
   <style>
+    /* ————————————————————————————————————————————
+       COLOR PALETTE & DESIGN TOKENS
+       ———————————————————————————————————————————— */
     :root { 
-      --bg: #FAF9F6; 
-      --white: #FFFFFF; 
-      --text: #1A1A1A; 
-      --gold: #D4AF37; 
-      --gold-subtle: rgba(212, 175, 55, 0.25);
-      --gray: #555555; 
+      --bg: #FAF9F6;               /* Warm ivory */
+      --white: #FFFFFF;            /* Pure white */
+      --text: #1A1A1A;             /* Deep charcoal */
+      --gold: #D4AF37;             /* Heritage gold */
+      --gold-glow: rgba(212, 175, 55, 0.35); /* Visible soft glow */
+      --gray: #555555;             /* Muted text */
     }
+
+    /* ————————————————————————————————————————————
+       GLOBAL RESET & NO SCROLL
+       ———————————————————————————————————————————— */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { 
-      overflow-x: hidden; 
+      height: 100%; 
+      overflow: hidden; 
       width: 100%; 
       margin: 0; 
       padding: 0; 
@@ -31,57 +49,65 @@
       position: relative;
     }
 
-    /* SUBTLE ANIMATED BACKGROUND */
+    /* ————————————————————————————————————————————
+       SUBTLE BREATHING BACKGROUND
+       ———————————————————————————————————————————— */
     .bg-animation {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(135deg, #FFF8E8, var(--bg), #FFF5E1);
       background-size: 400% 400%;
-      animation: gradientShift 20s ease infinite;
+      animation: gradientShift 22s ease infinite;
       z-index: -2;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* ULTRA-SUBTLE PARTICLES */
-    .particle {
+    /* ————————————————————————————————————————————
+       GOLDEN SPARKS — VISIBLE BUT ELEGANT
+       ———————————————————————————————————————————— */
+    .spark {
       position: absolute;
-      width: 2px; height: 2px;
+      width: 3px; height: 3px;
       background: var(--gold);
       border-radius: 50%;
-      opacity: 0.15;
+      opacity: 0.35;
       pointer-events: none;
-      animation: float 15s infinite linear;
-      box-shadow: 0 0 4px var(--gold-subtle);
+      animation: rise 14s infinite linear;
+      box-shadow: 0 0 6px var(--gold-glow);
+      z-index: 1;
     }
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      15% { opacity: 0.15; }
-      85% { opacity: 0.1; }
-      100% { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
+    @keyframes rise {
+      0%   { transform: translateY(120vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.35; }
+      90%  { opacity: 0.2; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
     }
 
+    /* ————————————————————————————————————————————
+       NAVIGATION BAR (Fixed, Glassmorphic)
+       ———————————————————————————————————————————— */
     nav { 
       position: fixed; top: 0; left: 0; right: 0; 
       padding: 2.2rem 8%; display: flex; justify-content: space-between; 
       align-items: center; background: rgba(255, 255, 255, 0.94); 
-      backdrop-filter: blur(14px); z-index: 1000; 
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; 
+      backdrop-filter: blur(16px); z-index: 1000; 
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06); 
     }
-    nav.scrolled { padding: 1.3rem 8%; background: rgba(255, 255, 255, 0.98); }
 
     .logo { 
-      font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.6rem; font-weight: 700; 
       color: var(--text); letter-spacing: 0.06em; 
     }
 
     .nav-links a { 
       color: var(--text); text-decoration: none; font-weight: 500; 
-      margin-left: 3.5rem; position: relative; transition: 0.3s; 
+      margin-left: 3.8rem; position: relative; transition: 0.3s; 
     }
     .nav-links a::after { 
       content: ''; position: absolute; width: 0; height: 1.8px; 
@@ -90,77 +116,80 @@
     .nav-links a:hover::after { width: 100%; } 
     .nav-links a:hover { color: var(--gold); }
 
-    /* PARALLAX HERO */
-    .hero-container {
+    /* ————————————————————————————————————————————
+       HERO SECTION — FULL SCREEN, CENTERED
+       ———————————————————————————————————————————— */
+    .hero {
       height: 100vh;
-      overflow: hidden;
-      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 0 8%;
-    }
-    .hero {
-      transform: translateY(0);
-      transition: transform 0.1s ease-out;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 { 
-      font-family: 'Playfair Display', serif; font-size: 8.8rem; 
-      font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.8rem; 
+      font-family: 'Playfair Display', serif; 
+      font-size: 9.2rem; 
+      font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.6rem; 
       color: var(--text);
-      text-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      animation: subtleGlow 4s ease-in-out infinite;
-    }
-    @keyframes subtleGlow {
-      0%, 100% { text-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-      50% { text-shadow: 0 4px 20px rgba(212, 175, 55, 0.15); }
+      text-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
     .hero p { 
-      font-size: 1.6rem; max-width: 720px; margin-bottom: 3.5rem; 
+      font-size: 1.7rem; max-width: 740px; margin-bottom: 3.8rem; 
       color: var(--gray); font-weight: 300; 
     }
 
     .cta { 
-      background: var(--gold); color: #000; padding: 1.6rem 4.2rem; 
+      background: var(--gold); color: #000; padding: 1.7rem 4.5rem; 
       font-weight: 600; text-decoration: none; border-radius: 70px; 
-      font-size: 1.25rem; transition: all 0.4s ease; 
-      box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3); 
+      font-size: 1.3rem; transition: all 0.4s ease; 
+      box-shadow: 0 16px 50px rgba(212, 175, 55, 0.35); 
       position: relative; overflow: hidden; 
       display: inline-block;
-      min-width: 180px;
+      min-width: 200px;
     }
     .cta::before {
       content: ''; position: absolute; top: 0; left: -100%; 
-      width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      width: 100%; height: 100%; 
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: 0.6s; 
     }
     .cta:hover::before { left: 100%; }
     .cta:hover { 
       transform: translateY(-6px); 
-      box-shadow: 0 22px 55px rgba(212, 175, 55, 0.4); 
+      box-shadow: 0 24px 60px rgba(212, 175, 55, 0.45); 
     }
 
+    /* ————————————————————————————————————————————
+       RESPONSIVE DESIGN
+       ———————————————————————————————————————————— */
     @media (max-width: 768px) { 
-      .hero h1 { font-size: 5.2rem; } 
+      .hero h1 { font-size: 5.5rem; } 
       .hero p { font-size: 1.3rem; } 
       .nav-links { display: none; } 
       .cta { padding: 1.4rem 3.2rem; font-size: 1.1rem; }
     }
   </style>
 </head>
+
+<!-- ============================================= -->
+<!-- BODY: FULL-SCREEN HERO ONLY                   -->
+<!-- ============================================= -->
 <body>
 
-  <!-- ANIMATED BACKGROUND -->
+  <!-- Breathing Background -->
   <div class="bg-animation"></div>
 
-  <!-- SUBTLE PARTICLES -->
-  <div id="particles"></div>
+  <!-- Golden Sparks Container -->
+  <div id="sparks"></div>
 
-  <nav id="navbar">
+  <!-- Navigation -->
+  <nav>
     <div class="logo">ALEXIC</div>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -171,43 +200,28 @@
     </div>
   </nav>
 
-  <!-- PARALLAX HERO -->
-  <div class="hero-container">
-    <section class="hero">
-      <h1>ALEXIC</h1>
-      <p>Ultra-Luxury Marketing Consultancy</p>
-      <a href="services.html" class="cta">Enter</a>
-    </section>
-  </div>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>ALEXIC</h1>
+    <p>Ultra-Luxury Marketing Consultancy</p>
+    <a href="services.html" class="cta">Enter</a>
+  </section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- ============================================= -->
+  <!-- SCRIPT: Generate Visible Golden Sparks        -->
+  <!-- ============================================= -->
   <script>
-    AOS.init({ duration: 1200, once: true });
+    // Generate 18 elegant golden sparks
+    const sparksContainer = document.getElementById('sparks');
+    const sparkCount = 18;
 
-    // Navbar scroll
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      navbar.classList.toggle('scrolled', window.scrollY > 100);
-    });
-
-    // Parallax effect
-    const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-      const scroll = window.scrollY;
-      hero.style.transform = `translateY(${scroll * 0.4}px)`;
-    });
-
-    // Ultra-subtle particles
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 25;
-
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = Math.random() * 100 + 'vw';
-      particle.style.animationDelay = Math.random() * 15 + 's';
-      particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-      particlesContainer.appendChild(particle);
+    for (let i = 0; i < sparkCount; i++) {
+      const spark = document.createElement('div');
+      spark.classList.add('spark');
+      spark.style.left = Math.random() * 100 + 'vw';
+      spark.style.animationDelay = Math.random() * 14 + 's';
+      spark.style.animationDuration = (Math.random() * 8 + 12) + 's';
+      sparksContainer.appendChild(spark);
     }
   </script>
 </body>

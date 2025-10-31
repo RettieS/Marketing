@@ -80,13 +80,16 @@ body {
     .nav-links a:hover { color: var(--accent); }
 
     /* Hero */
-  .hero {
-  background: 
-    linear-gradient(rgba(250, 249, 246, 0.92), rgba(250, 249, 246, 0.92)),
-    url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1350&q=80') 
-    center/cover fixed;
-  /* rest of hero styles */
-}
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 8%;
+      position: relative;
+    }
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: 5.8rem;

@@ -3,36 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — ALEXIC</title>
+  <title>Services — ALEXIC</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root { --bg: #FAF9F6; --white: #FFFFFF; --text: #1A1A1A; --accent: #D4AF37; --gray: #555555; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
-    nav { position: fixed; top: 0; left: 0; right: 0; padding: 2.2rem 8%; display: flex; justify-content: space-between; align-items: center; background: var(--white); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.04); }
+    nav { position: fixed; top: 0; left: 0; right: 0; padding: 2.2rem 8%; display: flex; justify-content: space-between; align-items: center; background: var(--white); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.04); transition: all 0.4s ease; }
     nav.scrolled { padding: 1.3rem 8%; box-shadow: 0 10px 40px rgba(0,0,0,0.07); }
     .logo { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 700; color: var(--text); letter-spacing: 0.06em; }
-    .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; margin-left: 3.5rem; position: relative; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; margin-left: 3.5rem; position: relative; transition: 0.3s; }
     .nav-links a::after { content: ''; position: absolute; width: 0; height: 1.8px; bottom: -10px; left: 0; background: var(--accent); transition: 0.3s; }
     .nav-links a:hover::after { width: 100%; } .nav-links a:hover { color: var(--accent); }
 
     h1 { font-family: 'Playfair Display', serif; font-size: 7.5rem; font-weight: 700; letter-spacing: 0.08em; line-height: 1.1; margin-bottom: 1.8rem; }
     h2 { font-family: 'Playfair Display', serif; font-size: 4.2rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 5rem; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; letter-spacing: 0.04em; }
     section { padding: 14rem 8% !important; }
 
-    .about-hero { text-align: center; background: var(--white); }
-    .about-hero p { font-size: 1.4rem; max-width: 800px; margin: 0 auto 3rem; color: var(--gray); }
+    .services-hero { text-align: center; background: var(--white); }
+    .services-hero p { font-size: 1.4rem; max-width: 800px; margin: 0 auto 4rem; color: var(--gray); }
+    .cards { display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap; }
+    .card { background: var(--white); padding: 4rem 3rem; width: 380px; border-radius: 18px; box-shadow: 0 15px 50px rgba(0,0,0,0.07); transition: all 0.5s ease; border: 1px solid rgba(0,0,0,0.04); }
+    .card:hover { transform: translateY(-18px); box-shadow: 0 30px 70px rgba(0,0,0,0.14); }
+    .card h3 { margin-bottom: 1.5rem; }
+    .card p { font-size: 1.1rem; line-height: 1.8; }
 
-    .values { background: var(--bg); text-align: center; }
-    .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; max-width: 1100px; margin: 0 auto; }
-    .value h3 { font-size: 2rem; margin-bottom: 1.2rem; }
-
-    .cta-section { text-align: center; background: var(--white); }
+    .cta-section { text-align: center; background: var(--bg); }
     .cta-section a { background: var(--accent); color: #000; padding: 1.5rem 4rem; border-radius: 70px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: 0.4s; }
     .cta-section a:hover { background: #E8C567; transform: translateY(-6px); }
 
-    @media (max-width: 768px) { h1 { font-size: 4.5rem; } .value-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { h1 { font-size: 4.5rem; } h2 { font-size: 3.2rem; } .nav-links { display: none; } }
   </style>
 </head>
 <body>
@@ -48,31 +50,27 @@
     </div>
   </nav>
 
-  <section class="about-hero" data-aos="fade-up">
-    <h1>Our Legacy</h1>
-    <p>Founded in 2019 on the principles of discretion, precision, and unrelenting excellence, ALEXIC serves only the most exclusive brands in the world. We do not chase trends. We define eras.</p>
-  </section>
-
-  <section class="values" data-aos="fade-up">
-    <h2>Our Values</h2>
-    <div class="value-grid">
-      <div class="value" data-aos="fade-up" data-aos-delay="100">
-        <h3>Discretion</h3>
-        <p>We protect your privacy as fiercely as your reputation.</p>
+  <section class="services-hero" data-aos="fade-up">
+    <h1>Our Craft</h1>
+    <p>We do not offer services. We architect legacies.</p>
+    <div class="cards">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Brand Strategy</h3>
+        <p>Timeless narratives that define dynasties and command premium positioning across generations.</p>
       </div>
-      <div class="value" data-aos="fade-up" data-aos-delay="200">
-        <h3>Precision</h3>
-        <p>Every decision is data-informed, every execution flawless.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Visual Identity</h3>
+        <p>Elegance in every detail — from palette to presence, crafted for permanence and reverence.</p>
       </div>
-      <div class="value" data-aos="fade-up" data-aos-delay="300">
-        <h3>Legacy</h3>
-        <p>We build brands that endure beyond seasons and cycles.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Growth Architecture</h3>
+        <p>Discreet, data-driven systems for sustainable, elite-level expansion without compromise.</p>
       </div>
     </div>
   </section>
 
   <section class="cta-section" data-aos="fade-up">
-    <a href="contact.html">Begin Your Journey</a>
+    <a href="contact.html">Begin Your Legacy</a>
   </section>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

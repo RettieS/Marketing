@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — ALEXIC</title>
-  <meta name="description" content="Founded on discretion, precision, and legacy. We serve only the most exclusive brands in the world.">
+  <title>ALEXIC — Ultra-Luxury Marketing Consultancy</title>
+  <meta name="description" content="We craft timeless brand narratives for the world’s most exclusive clientele.">
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,19 +16,17 @@
       --text: #1A1A1A;
       --accent: #D4AF37;
       --gray: #555555;
+      --light-gray: #888888;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: 
-    linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
-    url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1350&q=80') 
-    center/cover fixed;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.8;
-  overflow-x: hidden;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
 
     nav {
       position: fixed;
@@ -39,6 +37,7 @@ body {
       align-items: center;
       background: var(--white);
       z-index: 1000;
+      transition: all 0.4s ease;
       box-shadow: 0 2px 20px rgba(0,0,0,0.04);
     }
     nav.scrolled {
@@ -51,13 +50,16 @@ body {
       font-weight: 700;
       color: var(--text);
       letter-spacing: 0.06em;
+      transition: 0.3s;
     }
+    .logo:hover { color: var(--accent); }
     .nav-links a {
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
       margin-left: 3.2rem;
       position: relative;
+      transition: 0.3s;
     }
     .nav-links a::after {
       content: '';
@@ -72,77 +74,165 @@ body {
     .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover { color: var(--accent); }
 
-    .about-hero {
-      padding: 14rem 8% 8rem;
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      background: var(--white);
+      padding: 0 8%;
+      position: relative;
     }
-    .about-hero h1 {
+    .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 4.2rem;
+      font-size: 5.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       margin-bottom: 1.5rem;
-      color: var(--text);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.4s ease forwards;
     }
-    .about-hero p {
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      font-size: 1.2rem;
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 720px;
+      margin-bottom: 3.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.4s ease 0.3s forwards;
       color: var(--gray);
+      font-weight: 300;
     }
-
-    .values {
-      padding: 8rem 8%;
-      background: var(--bg);
-      text-align: center;
-    }
-    .values h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 4rem;
-    }
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .value {
-      padding: 2rem;
-    }
-    .value h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-    .value p {
-      color: var(--gray);
-      font-size: 1rem;
-    }
-
-    .cta-section {
-      padding: 8rem 8%;
-      text-align: center;
-      background: var(--white);
-    }
-    .cta-section a {
+    .cta {
       background: var(--accent);
       color: #000;
-      padding: 1.3rem 3.5rem;
-      border-radius: 60px;
-      text-decoration: none;
+      padding: 1.3rem 3.2rem;
       font-weight: 600;
+      text-decoration: none;
+      border-radius: 60px;
       font-size: 1.1rem;
-      transition: 0.4s;
+      transition: all 0.4s ease;
+      box-shadow: 0 12px 35px rgba(212,175,55,0.22);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.4s ease 0.6s forwards;
     }
-    .cta-section a:hover {
+    .cta:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(212,175,55,0.32);
       background: #E8C567;
-      transform: translateY(-5px);
+    }
+
+    .services {
+      padding: 11rem 8%;
+      text-align: center;
+      background: var(--white);
+    }
+    .services h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      margin-bottom: 4.5rem;
+      color: var(--text);
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 4.5rem;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: var(--white);
+      padding: 3.2rem 2.2rem;
+      width: 360px;
+      border-radius: 14px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.06);
+      transition: all 0.5s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    }
+    .card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .card p {
+      color: var(--gray);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .contact {
+      padding: 11rem 8%;
+      text-align: center;
+      background: var(--bg);
+    }
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .contact p {
+      max-width: 620px;
+      margin: 0 auto 3.2rem;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+    form {
+      max-width: 620px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.3rem;
+    }
+    input, textarea {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.09);
+      color: var(--text);
+      padding: 1.3rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
+    }
+    button {
+      background: var(--accent);
+      color: #000;
+      padding: 1.3rem;
+      border: none;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.4s;
+      font-size: 1.1rem;
+    }
+    button:hover {
+      background: #E8C567;
+      transform: translateY(-4px);
+    }
+    .success {
+      margin-top: 1.6rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: none;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
-      .about-hero h1 { font-size: 3rem; }
-      .value-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3.6rem; }
+      .nav-links { display: none; }
+      .cards { gap: 2.5rem; }
+      .card { width: 100%; max-width: 420px; }
     }
   </style>
 </head>
@@ -152,37 +242,47 @@ body {
     <div class="logo">ALEXIC</div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="index.html#services">Services</a>
+      <a href="#services">Services</a>
       <a href="about.html">About</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="about-me.html">Founder</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <section class="about-hero" data-aos="fade-up">
-    <h1>Our Legacy</h1>
-    <p>Founded in 2019 on the principles of discretion, precision, and unrelenting excellence, ALEXIC serves only the most exclusive brands in the world. We do not chase trends. We define eras.</p>
+  <section class="hero" id="home">
+    <h1>ALEXIC</h1>
+    <p>Ultra-Luxury Marketing Consultancy for the World’s Most Discerning Brands</p>
+    <a href="#services" class="cta">Explore Our Craft</a>
   </section>
 
-  <section class="values" data-aos="fade-up">
-    <h2>Our Values</h2>
-    <div class="value-grid">
-      <div class="value" data-aos="fade-up" data-aos-delay="100">
-        <h3>Discretion</h3>
-        <p>We protect your privacy as fiercely as your reputation.</p>
+  <section class="services" id="services" data-aos="fade-up">
+    <h2>Our Expertise</h2>
+    <div class="cards">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Brand Strategy</h3>
+        <p>Timeless narratives that define legacies and command premium positioning.</p>
       </div>
-      <div class="value" data-aos="fade-up" data-aos-delay="200">
-        <h3>Precision</h3>
-        <p>Every decision is data-informed, every execution flawless.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Visual Identity</h3>
+        <p>Elegance in every detail — from palette to presence, crafted for permanence.</p>
       </div>
-      <div class="value" data-aos="fade-up" data-aos-delay="300">
-        <h3>Legacy</h3>
-        <p>We build brands that endure beyond seasons and cycles.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Growth Architecture</h3>
+        <p>Discreet, data-driven systems for sustainable, elite-level expansion.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta-section" data-aos="fade-up">
-    <a href="index.html#contact">Begin Your Journey</a>
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Begin the Conversation</h2>
+    <p>We partner exclusively with visionaries. Let’s explore what’s possible.</p>
+    <form action="https://formspree.io/f/mzzkjlrb" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Vision" required></textarea>
+      <button type="submit">Send Inquiry</button>
+      <p class="success">Thank you. A senior strategist will respond within 24 hours.</p>
+    </form>
   </section>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -190,6 +290,17 @@ body {
     AOS.init({ duration: 1100, once: true });
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 100);
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    const form = document.querySelector('form');
+    const success = document.querySelector('.success');
+    form.addEventListener('submit', () => {
+      setTimeout(() => { success.style.display = 'block'; form.reset(); }, 1000);
     });
   </script>
 

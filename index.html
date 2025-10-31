@@ -6,7 +6,6 @@
   <title>ALEXIC — Ultra-Luxury Marketing Consultancy</title>
   <meta name="description" content="We craft timeless brand narratives for the world’s most exclusive clientele.">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -21,18 +20,14 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: 
-    linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
-    url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1350&q=80') 
-    center/cover fixed;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.8;
-  overflow-x: hidden;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
 
-    /* Navbar */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -79,7 +74,6 @@ body {
     .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Hero */
     .hero {
       height: 100vh;
       display: flex;
@@ -130,7 +124,6 @@ body {
       background: #E8C567;
     }
 
-    /* Services */
     .services {
       padding: 11rem 8%;
       text-align: center;
@@ -173,7 +166,6 @@ body {
       line-height: 1.7;
     }
 
-    /* Contact */
     .contact {
       padding: 11rem 8%;
       text-align: center;
@@ -246,25 +238,23 @@ body {
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav id="navbar">
     <div class="logo">ALEXIC</div>
     <div class="nav-links">
-      <a href="#home">Home</a>
+      <a href="index.html">Home</a>
       <a href="#services">Services</a>
       <a href="about.html">About</a>
+      <a href="about-me.html">Founder</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero" id="home">
     <h1>ALEXIC</h1>
     <p>Ultra-Luxury Marketing Consultancy for the World’s Most Discerning Brands</p>
     <a href="#services" class="cta">Explore Our Craft</a>
   </section>
 
-  <!-- Services -->
   <section class="services" id="services" data-aos="fade-up">
     <h2>Our Expertise</h2>
     <div class="cards">
@@ -283,7 +273,6 @@ body {
     </div>
   </section>
 
-  <!-- Contact -->
   <section class="contact" id="contact" data-aos="fade-up">
     <h2>Begin the Conversation</h2>
     <p>We partner exclusively with visionaries. Let’s explore what’s possible.</p>

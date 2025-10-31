@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About the Founder — ALEXIC</title>
+  <meta name="description" content="Meet the visionary behind ALEXIC — 25 years elevating the world’s most exclusive brands.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --white: #FFFFFF;
+      --text: #1A1A1A;
+      --accent: #D4AF37;
+      --gray: #555555;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 2.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--white);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      padding: 1.3rem 8%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.07);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.06em;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 3.2rem;
+      position: relative;
+      transition: 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.5px;
+      bottom: -8px;
+      left: 0;
+      background: var(--accent);
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .founder-hero {
+      padding: 16rem 8% 10rem;
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--white);
+    }
+    .founder-photo {
+      width: 380px;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      transition: 0.5s;
+    }
+    .founder-photo:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+    }
+    .founder-text {
+      flex: 1;
+    }
+    .founder-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    .founder-text .title {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .founder-text p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 1.8rem;
+      max-width: 680px;
+    }
+
+    .experience {
+      padding: 10rem 8%;
+      background: var(--bg);
+      text-align: center;
+    }
+    .experience h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 4rem;
+      color: var(--text);
+    }
+    .timeline {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(212,175,55,0.2);
+      transform: translateX(-50%);
+    }
+    .entry {
+      width: 45%;
+      padding: 1.8rem 2.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    .entry.left { margin-left: 0; }
+    .entry.right { margin-left: 55%; }
+    .entry::after {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 2.2rem;
+    }
+    .entry.left::after { right: -38px; }
+    .entry.right::after { left: -38px; }
+    .entry h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .entry .company {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .entry .years {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 0.8rem;
+    }
+
+    .awards {
+      padding: 10rem 8%;
+      background: var(--white);
+      text-align: center;
+    }
+    .awards h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 4.5rem;
+      color: var(--text);
+    }
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .award {
+      text-align: center;
+    }
+    .award-img {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: 0.4s;
+    }
+    .award:hover .award-img {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+    }
+    .award h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .award p {
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    .founder-cta {
+      padding: 8rem 8%;
+      text-align: center;
+      background: var(--bg);
+    }
+    .founder-cta a {
+      background: var(--accent);
+      color: #000;
+      padding: 1.3rem 3.5rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: 0.4s;
+    }
+    .founder-cta a:hover {
+      background: #E8C567;
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 992px) {
+      .founder-hero { flex-direction: column; text-align: center; padding-top: 14rem; }
+      .founder-photo { width: 300px; height: 380px; }
+      .timeline::before { left: 30px; }
+      .entry { width: 80%; margin-left: 60px !important; }
+      .entry.left::after, .entry.right::after { left: -38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo">ALEXIC</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="about.html">About</a>
+      <a href="about-me.html">Founder</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="founder-hero" data-aos="fade-up">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Julian Alexander" class="founder-photo">
+    <div class="founder-text">
+      <h1>Julian Alexander</h1>
+      <div class="title">Founder & Chief Strategist</div>
+      <p>With over 25 years elevating the world’s most exclusive brands, Julian has shaped the identity of private family offices, ultra-luxury maisons, and billion-dollar legacy enterprises across Europe, Asia, and the Middle East.</p>
+      <p>Former Global Head of Brand at LVMH and Chief Marketing Officer at a $3.2B Swiss private bank, he now leads ALEXIC — serving only 12 clients per year, by invitation only.</p>
+    </div>
+  </section>
+
+  <section class="experience" data-aos="fade-up">
+    <h2>Professional Journey</h2>
+    <div class="timeline">
+      <div class="entry left" data-aos="fade-right">
+        <h3>Global Head of Brand</h3>
+        <div class="company">LVMH Moët Hennessy Louis Vuitton</div>
+        <div class="years">2014 — 2019</div>
+        <p>Led rebranding of 7 iconic maisons. Grew digital luxury presence by 280% while preserving heritage.</p>
+      </div>
+      <div class="entry right" data-aos="fade-left">
+        <h3>Chief Marketing Officer</h3>
+        <div class="company">Pictet & Cie, Private Banking</div>
+        <div class="years">2009 — 2014</div>
+        <p>Built discreet digital ecosystem for UHNW clients. Grew AUM from $1.8B to $3.2B.</p>
+      </div>
+      <div class="entry left" data-aos="fade-right">
+        <h3>Creative Director</h3>
+        <div class="company">Hermès International</div>
+        <div class="years">2003 — 2009</div>
+        <p>Directed global campaigns. Launched limited-edition collections that sold out in 48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="awards" data-aos="fade-up">
+    <h2>Recognition</h2>
+    <div class="award-grid">
+      <div class="award" data-aos="zoom-in" data-aos-delay="100">
+        <div class="award-img">Trophy</div>
+        <h3>Luxury Brand of the Year</h3>
+        <p>World Luxury Awards, 2023</p>
+      </div>
+      <div class="award" data-aos="zoom-in" data-aos-delay="200">
+        <div class="award-img">Star</div>
+        <h3>Marketing Visionary</h3>
+        <p>Forbes 30 Under 30, 2018</p>
+      </div>
+      <div class="award" data-aos="zoom-in" data-aos-delay="300">
+        <div class="award-img">Medal</div>
+        <h3>Grand Prix Stratégies</h3>
+        <p>Best Luxury Campaign, 2017</p>
+      </div>
+      <div class="award" data-aos="zoom-in" data-aos-delay="400">
+        <div class="award-img">Crown</div>
+        <h3>Global Brand Leader</h3>
+        <p>Interbrand Top 100, 2015</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-cta" data-aos="fade-up">
+    <a href="index.html#contact">Work with Julian</a>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1100, once: true });
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 100);
+    });
+  </script>
+
+</body>
+</html>

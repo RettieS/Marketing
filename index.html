@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alexic - Ultra Luxury Marketing</title>
+  <title>Alexic Marcom - Marketing</title>
 
-  <!-- Google Fonts: Cinzel (headings) + Inter (body) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       background: #000;
       color: #FFD700;
@@ -18,6 +17,41 @@
       overflow-x: hidden;
     }
 
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: 0.3s;
+    }
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #FFF;
+    }
+
+    /* Hero */
     .hero {
       height: 100vh;
       display: flex;
@@ -30,7 +64,6 @@
                   url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') 
                   center/cover no-repeat;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       font-size: 5.5rem;
@@ -39,14 +72,12 @@
       margin-bottom: 1rem;
       text-shadow: 0 0 30px rgba(255,215,0,0.4);
     }
-
-    p {
+    p.subtitle {
       font-size: 1.5rem;
       max-width: 700px;
       margin-bottom: 2.5rem;
       opacity: 0.9;
     }
-
     .cta {
       background: #FFD700;
       color: #000;
@@ -58,24 +89,102 @@
       transition: all 0.3s ease;
       box-shadow: 0 10px 30px rgba(255,215,0,0.3);
     }
-
     .cta:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(255,215,0,0.5);
     }
 
+    /* Services */
+    .services {
+      padding: 5rem 5%;
+      text-align: center;
+      background: #111;
+    }
+    .services h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      margin-bottom: 3rem;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 2rem;
+      width: 300px;
+      border-radius: 15px;
+      border: 1px solid #333;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #FFD700;
+      box-shadow: 0 20px 40px rgba(255,215,0,0.1);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
     @media (max-width: 768px) {
       h1 { font-size: 3.2rem; }
-      p { font-size: 1.1rem; }
-      .cta { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .cards { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
-  <section class="hero">
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">ALEXIC</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
     <h1>ALEXIC</h1>
-    <p>Ultra-Luxury Marketing Consultancy</p>
+    <p class="subtitle">Ultra-Luxury Marketing Consultancy</p>
     <a href="#services" class="cta">Discover Excellence</a>
   </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Brand Strategy</h3>
+        <p>Craft timeless narratives for elite brands.</p>
+      </div>
+      <div class="card">
+        <h3>Visual Identity</h3>
+        <p>Elevate aesthetics to iconic status.</p>
+      </div>
+      <div class="card">
+        <h3>Growth Systems</h3>
+        <p>Scale with precision and discretion.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>

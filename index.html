@@ -10,16 +10,16 @@
   <meta name="description" content="We craft timeless brand narratives for the world’s most exclusive clientele.">
 
   <!-- ============================================= -->
-  <!-- GOOGLE FONTS: Playfair Display + Inter        -->
+  <!-- GOOGLE FONTS -->
   <!-- ============================================= -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- ============================================= -->
-  <!-- CSS: Root Variables & Global Styles           -->
+  <!-- CSS: UNIFIED STYLES -->
   <!-- ============================================= -->
   <style>
     /* ————————————————————————————————————————————
-       COLOR PALETTE & DESIGN TOKENS
+       COLOR PALETTE
        ———————————————————————————————————————————— */
     :root { 
       --bg: #FAF9F6; 
@@ -31,21 +31,19 @@
     }
 
     /* ————————————————————————————————————————————
-       GLOBAL RESET & NO SCROLL
+       RESET & PAGE LOAD ANIMATION
        ———————————————————————————————————————————— */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; overflow: hidden; width: 100%; }
     body { 
-      background: var(--bg); 
-      color: var(--text); 
-      font-family: 'Inter', sans-serif; 
-      line-height: 1.8; 
-      position: relative;
+      background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; 
+      line-height: 1.8; position: relative; opacity: 0; transition: opacity 0.8s ease;
       -webkit-tap-highlight-color: transparent;
     }
+    body.loaded { opacity: 1; }
 
     /* ————————————————————————————————————————————
-       BREATHING GRADIENT BACKGROUND
+       BREATHING BACKGROUND
        ———————————————————————————————————————————— */
     .bg-animation {
       position: fixed; inset: 0; z-index: -2; opacity: 0.7;
@@ -53,13 +51,10 @@
       background-size: 400% 400%;
       animation: gradientShift 22s ease infinite;
     }
-    @keyframes gradientShift { 
-      0%, 100% { background-position: 0% 50%; } 
-      50%      { background-position: 100% 50%; } 
-    }
+    @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
     /* ————————————————————————————————————————————
-       GOLDEN SPARKS — DESKTOP: 18, MOBILE: 12
+       GOLDEN SPARKS
        ———————————————————————————————————————————— */
     .spark {
       position: absolute; width: 3px; height: 3px; background: var(--gold); 
@@ -75,7 +70,7 @@
     }
 
     /* ————————————————————————————————————————————
-       NAVIGATION — DESKTOP HOVER + MOBILE TAP
+       NAVIGATION
        ———————————————————————————————————————————— */
     nav { 
       position: fixed; top: 0; left: 0; right: 0; padding: 1.6rem 5%;
@@ -86,114 +81,65 @@
 
     .logo { 
       font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; 
-      color: var(--text); letter-spacing: 0.06em; 
-      transition: all 0.4s ease; cursor: pointer; padding: 8px 0;
+      color: var(--text); letter-spacing: 0.06em; cursor: pointer; padding: 8px 0;
+      transition: all 0.4s ease;
     }
-    .logo:hover { 
-      transform: translateY(-3px); 
-      text-shadow: 0 8px 20px rgba(212, 175, 55, 0.25); 
-    }
+    .logo:hover { transform: translateY(-3px); text-shadow: 0 8px 20px rgba(212, 175, 55, 0.25); }
     .logo:active { transform: scale(0.95); }
 
-    /* HAMBURGER — MOBILE ONLY */
-    .hamburger {
-      display: none; cursor: pointer; z-index: 1001; padding: 10px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px; background: var(--text); 
-      margin: 5px 0; transition: 0.3s; border-radius: 1px;
-    }
+    .hamburger { display: none; cursor: pointer; z-index: 1001; padding: 10px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
     .hamburger:active span { background: var(--gold); }
 
-    /* NAV LINKS — DESKTOP HOVER + MOBILE TAP */
     .nav-links { display: flex; gap: 2.5rem; }
     .nav-links a { 
-      color: var(--text); text-decoration: none; font-weight: 500; 
-      position: relative; transition: color 0.3s ease; font-size: 0.95rem;
-      padding: 12px 8px; min-width: 44px; min-height: 44px; display: flex; align-items: center;
+      color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      position: relative; padding: 12px 8px; min-width: 44px; min-height: 44px; display: flex; align-items: center;
+      transition: color 0.3s ease;
     }
-    .nav-links a::after { 
-      content: ''; position: absolute; width: 0; height: 1.5px; 
-      bottom: 8px; left: 8px; background: var(--gold); transition: width 0.4s ease;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: calc(100% - 16px); }
-    .nav-links a:active { color: var(--gold); }
+    .nav-links a::after { content: ''; position: absolute; width: 0; height: 1.5px; bottom: 8px; left: 8px; background: var(--gold); transition: width 0.4s ease; }
+    .nav-links a:hover, .nav-links a:active { color: var(--gold); }
+    .nav-links a:hover::after, .nav-links a:active::after { width: calc(100% - 16px); }
 
     /* ————————————————————————————————————————————
-       HERO — RESPONSIVE
+       HERO (INDEX ONLY)
        ———————————————————————————————————————————— */
     .hero {
-      height: 100vh; display: flex; flex-direction: column; 
-      justify-content: center; align-items: center; text-align: center; 
-      padding: 0 6%; position: relative; z-index: 2;
+      height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+      padding: 0 6%; position: relative; z-index: 2; transform: scale(0.95); opacity: 0; transition: all 1s ease;
     }
-    .hero h1 { 
-      font-family: 'Playfair Display', serif; 
-      font-size: clamp(3.5rem, 12vw, 6rem); 
-      font-weight: 700; letter-spacing: 0.06em; margin-bottom: 1rem; 
-      color: var(--text); text-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    }
-    .hero p { 
-      font-size: clamp(1rem, 3.5vw, 1.3rem); max-width: 90%; margin-bottom: 2.5rem; 
-      color: var(--gray); font-weight: 300; 
-    }
+    .hero.visible { transform: scale(1); opacity: 1; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 6rem); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 1rem; color: var(--text); text-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+    .hero p { font-size: clamp(1rem, 3.5vw, 1.3rem); max-width: 90%; margin-bottom: 2.5rem; color: var(--gray); font-weight: 300; }
 
-    /* ————————————————————————————————————————————
-       CTA — PC: SHINE + SCALE | MOBILE: HAPTIC
-       ———————————————————————————————————————————— */
     .cta { 
-      background: var(--gold); color: #000; padding: 1.4rem 3.2rem; 
-      border-radius: 70px; font-weight: 600; font-size: 1.1rem; 
-      text-decoration: none; box-shadow: 0 12px 40px rgba(212, 175, 55, 0.35); 
-      position: relative; overflow: hidden; display: inline-block; 
-      min-width: 160px; min-height: 56px; 
-      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: var(--gold); color: #000; padding: 1.4rem 3.2rem; border-radius: 70px; font-weight: 600; font-size: 1.1rem; 
+      text-decoration: none; box-shadow: 0 12px 40px rgba(212, 175, 55, 0.35); position: relative; overflow: hidden; 
+      display: inline-block; min-width: 160px; min-height: 56px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
       touch-action: manipulation;
     }
-    .cta::before { 
-      content: ''; position: absolute; inset: 0; left: -100%; 
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); 
-      transition: left 0.7s ease;
-    }
-    .cta:hover { 
-      transform: translateY(-6px) scale(1.03); 
-      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5); 
-    }
+    .cta::before { content: ''; position: absolute; inset: 0; left: -100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.7s ease; }
+    .cta:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5); }
     .cta:hover::before { left: 100%; }
-    .cta:active { 
-      transform: translateY(-3px) scale(0.98); 
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); 
-    }
+    .cta:active { transform: translateY(-3px) scale(0.98); }
 
     /* ————————————————————————————————————————————
-       MOBILE LAYOUT
+       MOBILE
        ———————————————————————————————————————————— */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: block; }
-
       nav { padding: 1.4rem 5%; }
       .logo { font-size: 1.7rem; }
-
       .hero { padding: 0 5%; }
       .hero h1 { font-size: 4.2rem; }
       .hero p { font-size: 1.1rem; max-width: 85%; }
-
       .cta { padding: 1.2rem 2.8rem; font-size: 1rem; min-width: 140px; }
     }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 3.6rem; }
-      .hero p { font-size: 1rem; }
-    }
-
-    /* Mobile Menu */
     .nav-links.active {
-      position: fixed; top: 70px; left: 0; right: 0; 
-      background: rgba(255, 255, 255, 0.98); padding: 2rem 5%; 
-      display: flex; flex-direction: column; gap: 1.5rem; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 999;
+      position: fixed; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); padding: 2rem 5%; 
+      display: flex; flex-direction: column; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 999;
     }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -201,24 +147,15 @@
   </style>
 </head>
 
-<!-- ============================================= -->
-<!-- BODY: PC EFFECTS + MOBILE TOUCH               -->
-<!-- ============================================= -->
 <body>
-  <!-- Animated Background -->
+  <!-- Background -->
   <div class="bg-animation"></div>
-
-  <!-- Golden Sparks -->
   <div id="sparks"></div>
 
-  <!-- Navigation -->
+  <!-- Nav -->
   <nav>
-    <div class="logo" onclick="haptic()">ALEXIC</div>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="logo" onclick="goHome()">ALEXIC</div>
+    <div class="hamburger"><span></span><span></span><span></span></div>
     <div class="nav-links">
       <a href="index.html" onclick="haptic()">Home</a>
       <a href="services.html" onclick="haptic()">Services</a>
@@ -236,19 +173,27 @@
   </section>
 
   <!-- ============================================= -->
-  <!-- SCRIPT: Sparks + Haptic + Mobile Menu         -->
+  <!-- SCRIPT: Load Animation + Sparks + Nav + Haptic -->
   <!-- ============================================= -->
   <script>
-    // Haptic (iOS)
-    function haptic() {
-      if (navigator.vibrate) navigator.vibrate(30);
-    }
+    // Page Load Animation
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+      setTimeout(() => {
+        document.querySelector('.hero').classList.add('visible');
+      }, 300);
+    });
 
-    // Sparks — 18 on PC, 12 on mobile
+    // Haptic
+    function haptic() { if (navigator.vibrate) navigator.vibrate(30); }
+
+    // Go Home
+    function goHome() { window.location.href = 'index.html'; }
+
+    // Sparks
     const isMobile = window.innerWidth <= 768;
     const sparkCount = isMobile ? 12 : 18;
     const container = document.getElementById('sparks');
-
     for (let i = 0; i < sparkCount; i++) {
       const spark = document.createElement('div');
       spark.className = 'spark';
@@ -261,13 +206,11 @@
     // Mobile Menu
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       hamburger.classList.toggle('open');
       haptic();
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');

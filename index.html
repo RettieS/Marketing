@@ -1,180 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexic | Luxury Marketing Consultation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexic | Luxury Marketing Consultation</title>
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
-      overflow-x: hidden;
-    }
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    header {
-      width: 100%;
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-    }
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
 
-    .hero-content {
-      position: relative;
-      text-align: center;
-      max-width: 800px;
-      padding: 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
 
-    .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #f5f5f5 !important;
+        }
 
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
+        .nav-link {
+            color: #ddd !important;
+            transition: 0.3s ease;
+        }
 
-    .cta-btn {
-      padding: 12px 40px;
-      font-size: 1rem;
-      border: none;
-      background: #d4af37;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 30px;
-    }
+        .nav-link:hover {
+            color: #d4af37 !important;
+        }
 
-    .cta-btn:hover {
-      background: #b8962d;
-      transform: scale(1.05);
-    }
+        /* Hero Section */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(50%);
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
-    section.services {
-      padding: 100px 50px;
-      background-color: #fff;
-      text-align: center;
-    }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
 
-    section.services h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-    }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #e0e0e0;
+        }
 
-    .service-cards {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
+        .btn-gold {
+            background: linear-gradient(45deg, #d4af37, #b8860b);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 25px;
+            transition: 0.4s ease;
+        }
 
-    .service-card {
-      background-color: #f1f1f1;
-      padding: 40px;
-      width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .btn-gold:hover {
+            background: #fff;
+            color: #000;
+        }
 
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
 
-    .service-card h3 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
 
-    .service-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+        .service-card {
+            background-color: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s ease;
+        }
 
-    footer {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-    }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+        }
 
-    footer p {
-      margin: 5px 0;
-    }
-
-  </style>
+        footer {
+            background: #0a0a0a;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Alexic</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <header>
-    <div class="hero-content">
-      <h1>Exclusive Luxury Marketing Consultation</h1>
-      <p>Elevate your brand to the highest standards of elegance, professionalism, and prestige.</p>
-      <button class="cta-btn">Book a Consultation</button>
-    </div>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <video class="hero-video" autoplay muted loop>
+            <!-- ✅ Replace with your cinematic MP4 -->
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <div>
+            <h1 class="hero-title">Alexic</h1>
+            <p class="hero-subtitle">Elite Marketing & Brand Strategy for Visionary Leaders</p>
+            <a href="#contact" class="btn btn-gold">Book a Private Consultation</a>
+        </div>
+    </section>
 
-  <section class="services">
-    <h2>Our Expertise</h2>
-    <div class="service-cards">
-      <div class="service-card">
-        <h3>Brand Strategy</h3>
-        <p>Tailored branding solutions designed to reflect the sophistication of your business.</p>
-      </div>
-      <div class="service-card">
-        <h3>Luxury Market Research</h3>
-        <p>In-depth insights and trends analysis in the global luxury marketplace.</p>
-      </div>
-      <div class="service-card">
-        <h3>Exclusive Client Experiences</h3>
-        <p>Create unforgettable customer journeys that resonate with elegance and exclusivity.</p>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="container text-center">
+        <h2>About Alexic</h2>
+        <p>
+            Alexic is a luxury marketing consultancy specializing in high-end branding, bespoke digital strategy,
+            and exclusive market positioning for elite brands across the globe.
+        </p>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Luxury Marketing Consultation. All Rights Reserved.</p>
-    <p>Contact us at contact@luxuryconsult.com</p>
-  </footer>
+    <!-- Services -->
+    <section id="services" class="container">
+        <h2 class="text-center">Our Signature Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h4>Luxury Brand Identity</h4>
+                    <p>Crafting timeless brand visuals and narratives for elite market domination.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h4>Exclusive Digital Strategy</h4>
+                    <p>Bespoke digital campaigns designed for discerning audiences and high-net-worth clients.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h4>Private Consultation & Growth</h4>
+                    <p>One-on-one strategic sessions to cultivate long-lasting brand legacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Alexic. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
